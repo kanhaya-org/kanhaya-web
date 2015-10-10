@@ -21,6 +21,18 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
+    less: {
+      development: {
+        options: {
+          compress: true,
+          yuicompress: true,
+          optimization: 2
+        },
+        files: {
+          "css/main.css": "less/main.less" // destination file and source file
+        }
+      }
+    },
     uglify: {
   // my_target: {
   //   files: {

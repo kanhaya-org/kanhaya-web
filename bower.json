@@ -7,11 +7,13 @@
   "description": "A platform for booklovers to exchange books.",
   "main": "index.html",
   "dependencies": {
-    "moment": "^2.10.3",
-    "materialize": "~0.97.1",
-    "less": "~2.5.3",
+    "jquery": "~2.1.4",
     "react": "~0.14.0",
-    "polymer": "~1.1.5"
+    "less": "~2.5.3",
+    "bootstrap": "~3.3.5",
+    "materialize": "~0.97.1",
+    "polymer": "~1.1.5",
+    "moment": "^2.10.3"
   },
   "keywords": [
     "book",
