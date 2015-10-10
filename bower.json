@@ -1,0 +1,28 @@
+{
+  "name": "kanhaya",
+  "version": "0.0.1",
+  "authors": [
+    "lentebloem <thisisreallyaname@gmail.com>"
+  ],
+  "description": "A platform for booklovers to exchange books.",
+  "main": "index.html",
+  "dependencies": {
+    "moment": "^2.10.3",
+    "materialize": "~0.97.1",
+    "less": "~2.5.3",
+    "react": "~0.14.0",
+    "polymer": "~1.1.5"
+  },
+  "keywords": [
+    "book",
+    "share"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
