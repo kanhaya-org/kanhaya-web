@@ -12,7 +12,7 @@
     <title>Kanhaya</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="bower_components/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/homepage.css" rel="stylesheet">
@@ -114,77 +114,18 @@
 
                 <div class="row">
 
-                <script type="text/jsx" src="js/index.js"></script>
-
-                <div id="containeryeah">
-                    <!-- This element's contents will be replaced with your component. -->
+                <div id="mount-point">
+                  This element's content will be replaced
                 </div>
 
-                <div class="card col-sm-4 col-lg-4 col-md-4">
-                    <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="src/img/library1.jpg">
-                    </div>
-                    <div class="card-content">
-                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                      <p><a href="#">This is a link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                  </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$24.99</h4>
-                                <h4><a href="#">First Product</a>
-                                </h4>
-                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4 scrollspy section">
-                        <div class="thumbnail">
-                            <img src="src/img/gone.jpg" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">Berkeley</h4>
-                                <h4><a href="#">Gone with the Wind</a>
-                                <h4><a href="#">Margaret Mitchell</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <script src="js/index.js" type="text/jsx"></script>
 
                 </div>
 
             </div>
 
             <div class="col-md-3">
-                <p class="lead">Shop Name</p>
+                <p class="lead">Trending Books</p>
                 <div class="list-group">
                     <a href="#" class="list-group-item">Category 1</a>
                     <a href="#" class="list-group-item">Category 2</a>
@@ -205,13 +146,17 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Hanhaya 2015</p>
+                    <p>Copyright &copy; Kanhaya 2015</p>
                 </div>
             </div>
         </footer>
 
     </div>
     <!-- /.container -->
+
+    <!-- bower:js -->
+    <!-- This is the place where your script tags will be inserted -->
+    <!-- endbower -->
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -220,6 +165,7 @@
     <!-- <script src="src/jade/lunr.min.js"></script> -->
     <!-- <script src="src/jade/search.js"></script> -->
     <script src="bower_components/materialize/bin/materialize.js"></script>
+    <script src="js/index.js" type="text/javascript"></script>
 </body>
 
 </html>

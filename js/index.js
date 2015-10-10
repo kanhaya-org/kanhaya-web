@@ -1,87 +1,87 @@
-var ProductCategoryRow = React.createClass({
-    render: function() {
-        return (<tr><th colSpan="2">{this.props.category}</th></tr>);
-    }
-});
+"use strict";
 
-var ProductRow = React.createClass({
-    render: function() {
-        var name = this.props.product.stocked ?
-            this.props.product.name :
-            <span style={{color: 'red'}}>
-                {this.props.product.name}
-            </span>;
-        return (
-            <tr>
-                <td>{name}</td>
-                <td>{this.props.product.price}</td>
-            </tr>
+var List = React.createClass({
+  displayName: "List",
+
+  render: function render() {
+    return React.createElement(
+      "ul",
+      null,
+      this.props.items.map(function (item) {
+        return React.createElement(
+          "div",
+          { key: item.name, "class": "col-md-4" },
+          React.createElement(
+            "li",
+            null,
+            React.createElement(
+              "h5",
+              null,
+              item.name
+            ),
+            " by ",
+            item.author,
+            "  |  ",
+            React.createElement(
+              "b",
+              null,
+              item.location
+            )
+          ),
+          " ",
+          React.createElement(
+            "li",
+            null,
+            item.recentComment
+          )
         );
-    }
+      })
+    );
+  }
 });
 
-var ProductTable = React.createClass({
-    render: function() {
-        var rows = [];
-        var lastCategory = null;
-        this.props.products.forEach(function(product) {
-            if (product.category !== lastCategory) {
-                rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
-            }
-            rows.push(<ProductRow product={product} key={product.name} />);
-            lastCategory = product.category;
-        });
-        return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </table>
-        );
-    }
+var FilteredList = React.createClass({
+  displayName: "FilteredList",
+
+  filterList: function filterList(event) {
+    var updatedList = this.state.booklist;
+    updatedList = updatedList.filter(function (item) {
+      return item.name.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({ items: updatedList });
+  },
+  getInitialState: function getInitialState() {
+    return {
+      booklist: [{
+        name: "Humans of New York: Stories",
+        author: ["Brandon Stanton"],
+        location: "Berkeley",
+        recentComment: "There's no judgment, just observation and in many cases reverence, making for an inspiring reading and visual experience. (Publishers Weekly (starred review) on Humans of New York)"
+      }, {
+        name: "The Metamorphosis",
+        author: ["Franz Kafka"],
+        location: "San Francisco",
+        recentComment: "The Metamorphosis is a short novel by Franz Kafka, first published in 1915. It is often cited as one of the seminal works of fiction of the 20th century and is widely studied in colleges and universities across the western world. The story begins with a traveling salesman, Gregor Samsa, waking to find himself transformed into an insect."
+      }, {
+        name: "Franz Kafka: The Complete Stories",
+        author: ["Franz Kafka", "Nahum N. Glatzer"],
+        location: "Oakland",
+        recentComment: "[Kafka] spoke for millions in their new unease; a century after his birth, he seems the last holy writer, and the supreme fabulist of modern man’s cosmic predicament. —from the Foreword by John Updike."
+      }],
+      items: []
+    };
+  },
+  componentWillMount: function componentWillMount() {
+    this.setState({ items: this.state.booklist });
+  },
+  render: function render() {
+    return React.createElement(
+      "div",
+      { className: "filter-list" },
+      React.createElement("input", { type: "text", placeholder: "Search", onChange: this.filterList }),
+      React.createElement(List, { items: this.state.items })
+    );
+  }
 });
 
-var SearchBar = React.createClass({
-    render: function() {
-        return (
-            <form>
-                <input type="text" placeholder="Search..." />
-                <p>
-                    <input type="checkbox" />
-                    {' '}
-                    Only show products in stock
-                </p>
-            </form>
-        );
-    }
-});
-
-var FilterableProductTable = React.createClass({
-    render: function() {
-        return (
-            <div>
-                <SearchBar />
-                <ProductTable products={this.props.products} />
-            </div>
-        );
-    }
-});
-
-
-var PRODUCTS = [
-  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
-];
-
-ReactDOM.render(
-    <FilterableProductTable products={PRODUCTS} />,
-    document.getElementById('containeryeah')
-);
+React.render(React.createElement(FilteredList, null), document.getElementById('mount-point'));

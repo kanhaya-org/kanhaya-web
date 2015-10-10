@@ -1,5 +1,7 @@
-/*global module:false*/
+/*global module*/
 module.exports = function(grunt) {
+
+  // require("load-grunt-tasks")(grunt); // npm install --save-dev load-grunt-tasks
 
   // Project configuration.
   grunt.initConfig({
@@ -33,6 +35,11 @@ module.exports = function(grunt) {
         }
       }
     },
+    wiredep: {
+      task: {
+        src: ['index.html']
+      }
+    },
     uglify: {
   // my_target: {
   //   files: {
@@ -45,6 +52,16 @@ module.exports = function(grunt) {
       dist: {
         src: '<%= concat.dist.dest %>',
         dest: 'dist/<%= pkg.name %>.min.js'
+      }
+    },
+    babel: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: {
+          "js/app.js": "js/index.js"
+        }
       }
     },
     jshint: {
@@ -70,7 +87,8 @@ module.exports = function(grunt) {
       },
       lib_test: {
         src: ['lib/**/*.js', 'test/**/*.js']
-      }
+      },
+      build: ['Gruntfile.js', 'src/**/*.js']
     },
     qunit: {
       files: ['test/**/*.html']
@@ -83,7 +101,14 @@ module.exports = function(grunt) {
       lib_test: {
         files: '<%= jshint.lib_test.src %>',
         tasks: ['jshint:lib_test', 'qunit']
+      },
+      bower_components: {
+        files: ['bower_components/*'],
+        tasks: ['wiredep']
       }
+    },
+    browserify: {
+      '/js/index.js': ['/js/index.jsx']
     }
   });
 
@@ -93,8 +118,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-wiredep');
 
-  // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+
+  grunt.registerTask('default', ['jshint', 'uglify']);
+  grunt.registerTask('changes', ['watch']);
+  grunt.registerTask('babel', ['babel']);
 
 };
