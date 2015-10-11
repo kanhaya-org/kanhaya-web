@@ -23,29 +23,17 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
-    less: {
-      development: {
-        options: {
-          compress: true,
-          yuicompress: true,
-          optimization: 2
-        },
-        files: {
-          "css/main.css": "less/main.less" // destination file and source file
-        }
-      }
-    },
     wiredep: {
       task: {
         src: ['index.html']
       }
     },
     uglify: {
-  // my_target: {
-  //   files: {
-  //     'dest/output.min.js': ['src/input1.js', 'src/input2.js']
-  //   }
-  // }
+      my_target: {
+        files: {
+          'dest/output.min.js': ['src/input1.js', 'src/input2.js']
+        }
+      },
       options: {
         banner: '<%= banner %>'
       },
@@ -93,7 +81,26 @@ module.exports = function(grunt) {
     qunit: {
       files: ['test/**/*.html']
     },
+    less: {
+      development: {
+        options: {
+          compress: true,
+          yuicompress: true,
+          optimization: 2
+        },
+        files: {
+          "css/homepage.css": "css/homepage.less" // destination file and source file
+        }
+      }
+    },
     watch: {
+      styles: {
+        files: ['css/homepage.less'], // which files to watch
+        tasks: ['less'],
+        options: {
+          nospawn: true
+        }
+      },
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
@@ -124,5 +131,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'uglify']);
   grunt.registerTask('changes', ['watch']);
   grunt.registerTask('babel', ['babel']);
+  grunt.registerTask('update', ['less']);
 
 };

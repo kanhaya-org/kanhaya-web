@@ -10,7 +10,7 @@ var List = React.createClass({
       this.props.items.map(function (item) {
         return React.createElement(
           "div",
-          { key: item.name, "class": "col-md-4" },
+          { key: item.name },
           React.createElement(
             "li",
             null,
@@ -32,7 +32,11 @@ var List = React.createClass({
           React.createElement(
             "li",
             null,
-            item.recentComment
+            React.createElement(
+              "p",
+              { "class": "flow-text" },
+              item.recentComment
+            )
           )
         );
       })
@@ -56,16 +60,19 @@ var FilteredList = React.createClass({
         name: "Humans of New York: Stories",
         author: ["Brandon Stanton"],
         location: "Berkeley",
+        language: "English",
         recentComment: "There's no judgment, just observation and in many cases reverence, making for an inspiring reading and visual experience. (Publishers Weekly (starred review) on Humans of New York)"
       }, {
         name: "The Metamorphosis",
         author: ["Franz Kafka"],
         location: "San Francisco",
+        language: "English",
         recentComment: "The Metamorphosis is a short novel by Franz Kafka, first published in 1915. It is often cited as one of the seminal works of fiction of the 20th century and is widely studied in colleges and universities across the western world. The story begins with a traveling salesman, Gregor Samsa, waking to find himself transformed into an insect."
       }, {
         name: "Franz Kafka: The Complete Stories",
         author: ["Franz Kafka", "Nahum N. Glatzer"],
         location: "Oakland",
+        language: "English",
         recentComment: "[Kafka] spoke for millions in their new unease; a century after his birth, he seems the last holy writer, and the supreme fabulist of modern man’s cosmic predicament. —from the Foreword by John Updike."
       }],
       items: []

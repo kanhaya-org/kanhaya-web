@@ -1,5 +1,31 @@
+@blue-grey-lighten-5: #eceff1;
+@blue-grey-lighten-4: #cfd8dc;
+@blue-grey-lighten-3: #b0bec5;
+@blue-grey-lighten-2: #90a4ae;
+@blue-grey-lighten-1: #78909c;
+@blue-grey-lighten-5: #eceff1;
+@blue-grey:           #607d8b;
+@blue-grey-darken-1:  #546e7a;
+@blue-grey-darken-2:  #455a64;
+@blue-grey-darken-3:  #37474f;
+@blue-grey-darken-4:  #263238;
+
+.gradient-color(@c1, @c2) when (iscolor(@c1)) {
+  background: -webkit-linear-gradient(@c1, @c2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(@c1, @c2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(@c1, @c2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(@c1, @c2); /* Standard syntax */
+};
+
+
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    .gradient-color(@blue-grey, @blue-grey-lighten-5);
+}
+
+nav {
+  background-color: transparent !important;
+  opacity: 50%;
 }
 
 .slide-image {
